@@ -11,8 +11,7 @@ RUN apt-get update && apt-get install -y software-properties-common \
  && rm -rf /var/lib/apt/lists/*
 
 # XMage Defaults
-ENV JAVA_HOME=/usr/lib/jvm/java-8-oracle \
-    XMAGE_DOCKER_SERVER_ADDRESS="0.0.0.0" \
+ENV XMAGE_DOCKER_SERVER_ADDRESS="0.0.0.0" \
     XMAGE_DOCKER_PORT="17171" \
     XMAGE_DOCKER_SEONDARY_BIND_PORT="17179" \
     XMAGE_DOCKER_SERVER_NAME="mage-server"
