@@ -1,19 +1,17 @@
-FROM ubuntu:14.04
+FROM ubuntu:latest
 
-RUN apt-get install -y software-properties-common \
- && echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections \
- && add-apt-repository ppa:webupd8team/java \
+RUN apt-get update && apt-get install -y software-properties-common \
+ && add-apt-repository ppa:openjdk-r/ppa \
  && apt-get update && apt-get install -y \
     curl \
     jq \
-    oracle-java8-installer \
+    openjdk-11-jdk \
     unzip \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
 # XMage Defaults
-ENV JAVA_HOME=/usr/lib/jvm/java-8-oracle \
-    XMAGE_DOCKER_SERVER_ADDRESS="0.0.0.0" \
+ENV XMAGE_DOCKER_SERVER_ADDRESS="0.0.0.0" \
     XMAGE_DOCKER_PORT="17171" \
     XMAGE_DOCKER_SEONDARY_BIND_PORT="17179" \
     XMAGE_DOCKER_SERVER_NAME="mage-server"
